@@ -1,0 +1,2 @@
+include ':app', ':mbase'
+rootProject.name='AndroidUpdate2020'
