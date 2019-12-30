@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -30,8 +32,40 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation project (':mbase')
+    implementation project(':mbase')
+
+    def log_version = "4.7.1"
+    implementation "com.jakewharton.timber:timber:$log_version" //https://github.com/JakeWharton/timber
+
+    def gson_version = "2.8.6"
+    implementation "com.google.code.gson:gson:$gson_version" //https://github.com/google/gson
+
+    def room_version = '2.2.3' //https://developer.android.com/jetpack/androidx/releases/room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    def lifecycle_version = "2.1.0" //https://developer.android.com/jetpack/androidx/releases/lifecycle
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
+    def retrofit_version = '2.7.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    def dagger2_version = '2.25.4'
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+    compileOnly "org.glassfish:javax.annotation:3.1.1"
+
+    def rx_java_version = '3.0.0-RC6'
+    def rx_android_version = '2.1.1'
+    implementation "io.reactivex.rxjava3:rxjava:$rx_java_version" //https://github.com/ReactiveX/RxJava
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version" //https://github.com/ReactiveX/RxAndroid
+
+    def data_binding_version = '3.1.4'
+    kapt "com.android.databinding:compiler:$data_binding_version"
 }
